@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "NDEmailTextField"
-  s.version      = "1.0.0"
+  s.version      = "1.0.1"
   s.summary      = "Autocomplete email text field for iOS."
   s.homepage     = "https://github.com/mozzet/NDEmailTextField"
   s.license      = { :type => 'MIT', :file => 'LICENSE' }
