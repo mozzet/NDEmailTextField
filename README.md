@@ -7,6 +7,11 @@ NDEmailTextField
 1. **SUPER EASY** to use.
 1. Customizable.
 
+Requirements
+----
+- Xcode 8.0+
+- iOS 7.0+
+
 Screenshots
 ----
 
