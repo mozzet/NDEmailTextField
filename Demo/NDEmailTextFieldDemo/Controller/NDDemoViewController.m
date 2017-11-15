@@ -38,7 +38,19 @@
     self.view.backgroundColor = [UIColor whiteColor];
     
     _defaultTextField = [[NDEmailTextField alloc] init];
+    
     _defaultTextField.placeholder = @"Basic text field";
+    _defaultTextField.layer.borderWidth = 1;
+
+//    If you want to apply inset
+    
+//    _defaultTextField.leftView = leftView;
+//    UIView *leftView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 8, _defaultTextField.frame.size.height)];
+//    _defaultTextField.leftViewMode = UITextFieldViewModeAlways;
+
+//    or
+    
+    _defaultTextField.edgeInsets = UIEdgeInsetsMake(0, 8, 0, 0);
     
     _customTextField = [[NDEmailTextField alloc] initWithDomains:@[@"mozzet.com"]];
     _customTextField.font = [UIFont fontWithName:@"AmericanTypewriter-CondensedBold" size:20.f];
