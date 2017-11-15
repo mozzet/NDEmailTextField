@@ -43,6 +43,7 @@
     self.keyboardType = UIKeyboardTypeEmailAddress;
     self.autocorrectionType = UITextAutocorrectionTypeNo;
     self.autocapitalizationType = UITextAutocapitalizationTypeNone;
+    self.edgeInsets = UIEdgeInsetsMake(0, 0, 0, 0);
     
     [self addTarget:self
              action:@selector(nd_emailEditingChanged:)
@@ -76,6 +77,11 @@
         return;
     }
     
+    CGFloat leftViewWidth = 0.0;
+    if(self.leftView) {
+        leftViewWidth = self.leftView.frame.size.width;
+    }
+    
     NSString *recommendDomain = [self.class recommentDomainWithText:self.text
                                                           inDomains:_domains];
     NSString *writtenDomain = [self.text componentsSeparatedByString:@"@"].lastObject;
@@ -84,7 +90,7 @@
     _domainLabel.text = domain;
     CGFloat textWidth = [self.text sizeWithAttributes:@{NSFontAttributeName:self.font}].width;
     
-    _domainLabel.frame = CGRectMake(textWidth, .0f, CGRectGetWidth(self.frame) - textWidth, CGRectGetHeight(self.frame));
+    _domainLabel.frame = CGRectMake(textWidth + _edgeInsets.left + leftViewWidth, .0f, CGRectGetWidth(self.frame) - textWidth, CGRectGetHeight(self.frame));
 }
 
 - (void)nd_emailEditingEnded:(id)sender
@@ -158,6 +164,15 @@
 }
 
 #pragma mark - View utility
+
+- (CGRect)textRectForBounds:(CGRect)bounds {
+    return [super textRectForBounds:UIEdgeInsetsInsetRect(bounds, self.edgeInsets)];
+}
+
+- (CGRect)editingRectForBounds:(CGRect)bounds {
+    return [super editingRectForBounds:UIEdgeInsetsInsetRect(bounds, self.edgeInsets)];
+}
+
 
 + (UIColor *)defaultDomainTextColor
 {

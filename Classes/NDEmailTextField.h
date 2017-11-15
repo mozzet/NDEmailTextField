@@ -25,6 +25,13 @@
 @property (null_resettable, weak, nonatomic) UIColor *domainTextColor;
 
 /**
+ * The insets for the textView.
+ * If you set this property as nil, it will be reset to default inset.
+ * The default insets is UIEdgeInsetsMake(0, 0, 0, 0).
+ */
+@property (nonatomic, assign) UIEdgeInsets edgeInsets;
+
+/**
  Initialize and return `NDEmailTextField` with domain list.
 
  @param domains Domain list, be recommended. If you set this property as nil, this will be reset to default domain list.
